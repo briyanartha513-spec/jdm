@@ -38,7 +38,7 @@ if (isset($_SESSION['username'])) {
             <div class="card-body">
             	<div class="text-center mb-3">
                 <i class="bi bi-controller h1 display-4"></i>
-                <p>Mobile Legends Professional League</p>
+                <p>jdm car admin</p>
                 <hr />
               </div>
               <form action="" method="post" id="login-form">
