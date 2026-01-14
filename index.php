@@ -9,7 +9,7 @@ include "koneksi.php";
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>MPL</title>
+    <title>JDM</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -135,7 +135,7 @@ body.dark .card-footer small {
 
       <div class="container">
         <div class="d-sm-flex flex-sm-row-reverse align-items-center">
-          <img src="img/ml.jpg" class="img-fluid" width="300" />
+          <img src="img/JDM ICON.jpeg" class="img-fluid" width="300" />
           <div>
             <h1 class="fw-bold display-4">
               Apa itu jdm?
@@ -196,18 +196,24 @@ body.dark .card-footer small {
         <h1 class="fw-bold display-4 pb-3">Gallery</h1>
         <div id="carouselExample" class="carousel slide">
           <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="img/RAJA-GALAXY.png" class="d-block w-100" alt="..." />
-            </div>
-            <div class="carousel-item">
-              <img src="img/banner.jpg" class="d-block w-100" alt="..." />
-            </div>
-            <div class="carousel-item">
-              <img src="img/vs.jpg" class="d-block w-100" alt="..." />
-            </div>
-            <div class="carousel-item">
-              <img src="img/yonz.jpg" class="d-block w-100" alt="..." />
-            </div>
+            <<?php
+            $sql = "SELECT * FROM gallery ORDER BY tanggal DESC";
+            $hasil = $conn->query($sql);
+            $active = "active";
+
+            while ($row = $hasil->fetch_assoc()) {
+            ?>
+              <div class="carousel-item <?= $active ?>">
+                <img 
+                  src="img/<?= $row['Gambar'] ?>" 
+                  class="d-block w-100"
+                  alt="<?= htmlspecialchars($row['deskripsi']) ?>"
+                >
+              </div>
+            <?php
+              $active = ""; // hanya item pertama yg active
+            }
+            ?>
           </div>
           <button
             class="carousel-control-prev"
@@ -364,7 +370,7 @@ body.dark .card-footer small {
         <i class="h2 bi bi-twitter p-2"></i>
         <i class="h2 bi bi-whatsapp p-2"></i>
       </div>
-      <div><p>Irghy Achmad Ramadhan &copy; 2025</p></div>
+      <div><p>Briyan Dhanuartha &copy; 2025</p></div>
     </footer>
     <!-- FOOTER END -->
      		<!-- Tombol Back to Top -->
